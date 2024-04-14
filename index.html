@@ -1,1 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanadium Raider</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif; /* Use Roboto font for the body */
+      overflow-y: scroll; /* Always show vertical scrollbar */
+      background: linear-gradient(to bottom, #c50f1f, black); /* Gradient background from red to black */
+      color: white; /* Set text color to white */
+      min-height: 100vh; /* Ensure the HTML element stretches to at least the height of the viewport */
+    }
 
+    ::-webkit-scrollbar {
+      width: 0; /* Hide scrollbar for Chrome, Safari, and Opera */
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent; /* Hide scrollbar track */
+    }
+
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent; /* Make hero section background transparent */
+      overflow: hidden;
+      transition: opacity 0.5s ease;
+    }
+
+    .content-section {
+      padding: 50px;
+      opacity: 0.8; /* Reduced opacity */
+      transition: opacity 0.7s ease; /* Faster opacity transition */
+      text-align: center; /* Center the content horizontally */
+      background-color: transparent; /* Transparent background */
+    }
+
+    .visible {
+      opacity: 1;
+    }
+
+    .vanadium-image {
+      width: 800px; /* Increased width */
+      height: auto; /* Maintain aspect ratio */
+      margin-bottom: 40px; /* Increased margin */
+      display: block; /* Ensure image is displayed as block-level element */
+      margin: 0 auto; /* Center the image horizontally */
+      filter: blur(5px); /* Initial blur effect */
+      border-radius: 20px; /* Curved edges */
+      transition: filter 0.5s ease; /* Smooth filter transition */
+      transition-delay: 0.3s; /* Reduced delay for quicker unblur */
+      outline: 2px solid red; /* Red outline */
+      box-shadow: 0 0 15px red; /* Red glowing effect */
+    }
+
+    .vanadium-image.unblur {
+      filter: none; /* Remove blur effect */
+    }
+
+    h2 {
+      font-size: 32px; /* Increased font size */
+      font-family: 'Roboto', sans-serif; /* Use Roboto font */
+    }
+
+    p {
+      font-size: 20px; /* Increased font size */
+      line-height: 1.6; /* Improved readability with increased line height */
+      font-family: 'Roboto', sans-serif; /* Use Roboto font */
+    }
+
+    .purchase-button {
+      padding: 15px 30px; /* Increased padding */
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px; /* Increased border radius */
+      font-size: 24px; /* Increased font size */
+      cursor: pointer;
+      transition: background-color 0.3s ease, outline-color 0.3s ease; /* Added transition for outline color */
+      outline: 2px solid transparent; /* Initial transparent outline */
+    }
+
+    .purchase-button:hover {
+      background-color: #45a049;
+      outline-color: #4CAF50; /* Change outline color on hover */
+      box-shadow: 0 0 15px #4CAF50; /* Add glowing effect */
+    }
+  </style>
+</head>
+<body>
+  <section class="hero-section fade-in">
+    <div class="hero-content">
+      <h1>Welcome to Vanadium Raider</h1>
+      <p>Scroll down to learn more</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="fade-out">
+      <h2>Get Good, Buy Vanadium Today.</h2>
+      <p>Vanadium is THE BEST Discord raider, offering unmatched features. With the fastest Discord spammer on the market and a token joiner with no locks, It's the BEST choice for raiding servers.</p>
+      <img class="vanadium-image" src="vanadium.png" alt="Vanadium Tool">
+      <br> <!-- Add line break to separate the image and button -->
+      <button class="purchase-button" id="purchase-button">Purchase</button>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const contentSection = document.querySelector('.content-section');
+      const vanadiumImage = document.querySelector('.vanadium-image');
+      const purchaseButton = document.getElementById('purchase-button');
+
+      window.addEventListener('scroll', function() {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const contentSectionOffsetTop = document.querySelector('.content-section').offsetTop;
+
+        if (scrollPosition + windowHeight > contentSectionOffsetTop + 100) {
+          contentSection.classList.add('visible');
+          vanadiumImage.classList.add('unblur'); /* Add unblur class */
+        } else {
+          contentSection.classList.remove('visible');
+          vanadiumImage.classList.remove('unblur'); /* Remove unblur class */
+        }
+      });
+
+      purchaseButton.addEventListener('click', function() {
+        window.location.href = 'https://dsc.gg/vanadium';
+      });
+    });
+  </script>
+</body>
+</html>
